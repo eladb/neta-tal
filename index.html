@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שוברי בייביסיטר רשמיים של משפחת בן־שדה 🍼 — לנטע וטל</title>
+<style>
+  :root{
+    --ink:#2a2342;
+    --paper:#fff9f3;
+    --gold:#d9a441;
+    --rose:#ff7aa8;
+    --aviv:#ff6fa5;
+    --aviv2:#ffa6c9;
+    --nevo:#5b8def;
+    --nevo2:#7fd0ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:
+      radial-gradient(circle at 20% 10%, #fff2f7 0%, transparent 45%),
+      radial-gradient(circle at 80% 20%, #eef4ff 0%, transparent 45%),
+      linear-gradient(160deg,#fdf3ec 0%,#fbe9f1 50%,#eef3fd 100%);
+    color:var(--ink);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  /* floating hearts */
+  .sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .sky span{
+    position:absolute;bottom:-40px;font-size:1.2rem;opacity:.0;
+    animation:float linear infinite;
+  }
+  @keyframes float{
+    0%{transform:translateY(0) rotate(0);opacity:0}
+    12%{opacity:.4}
+    88%{opacity:.28}
+    100%{transform:translateY(-115vh) rotate(360deg);opacity:0}
+  }
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:1.5rem 1.1rem 4rem}
+
+  /* hero */
+  .hero{text-align:center;padding:2.2rem 1rem 1.4rem}
+  .hero .rings{font-size:3rem;filter:drop-shadow(0 4px 8px rgba(217,164,65,.35));animation:pop 1s ease}
+  @keyframes pop{0%{transform:scale(.2);opacity:0}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+  .hero h1{
+    font-size:clamp(1.4rem,5.4vw,1.95rem);line-height:1.4;margin:.7rem auto .3rem;
+    max-width:18ch;font-weight:800;letter-spacing:-.3px;
+    background:linear-gradient(90deg,var(--aviv),var(--gold),var(--nevo));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero h1 .nowrap{white-space:nowrap}
+  .hero .amp{font-size:1.7rem;vertical-align:middle;color:var(--gold);margin:0 .3rem}
+  .hero .date{font-size:1rem;opacity:.65;margin-top:.4rem;letter-spacing:.5px}
+  .hero .mazal{
+    display:inline-block;margin-top:1rem;font-size:1.05rem;font-weight:700;
+    background:#fff;padding:.5rem 1.2rem;border-radius:999px;
+    box-shadow:0 6px 18px rgba(217,164,65,.18);border:1.5px solid #f3dcc0;
+  }
+
+  /* love note */
+  .note{
+    background:var(--paper);border-radius:22px;padding:1.6rem 1.4rem;margin:1.4rem 0;
+    box-shadow:0 12px 30px rgba(120,90,140,.12);
+    border:1px solid #f1e3ef;position:relative;
+  }
+  .note::before{content:"💌";position:absolute;top:-16px;right:22px;font-size:2rem;
+    filter:drop-shadow(0 3px 4px rgba(0,0,0,.12))}
+  .note h2{font-size:1.15rem;margin-bottom:.7rem;color:var(--rose)}
+  .note p{font-size:1.02rem;line-height:1.75;margin-bottom:.7rem}
+  .note .sign{text-align:left;font-weight:800;font-size:1.05rem;margin-top:.4rem;
+    background:linear-gradient(90deg,var(--aviv),var(--nevo));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* counter */
+  .counter{text-align:center;margin:1.6rem 0 1rem;font-size:.95rem;opacity:.75}
+  .counter b{font-size:1.15rem;color:var(--gold)}
+
+  .group-label{
+    display:flex;align-items:center;gap:.7rem;margin:1.8rem 0 .9rem;font-size:1.15rem;font-weight:800;
+    white-space:nowrap;
+  }
+  .group-label .line{flex:1;height:2px;border-radius:2px;opacity:.3}
+  .aviv-c{color:var(--aviv)} .nevo-c{color:var(--nevo)}
+  .aviv-c .line{background:var(--aviv)} .nevo-c .line{background:var(--nevo)}
+
+  /* coupon grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  @media(max-width:480px){.grid{grid-template-columns:1fr}}
+
+  .ticket{
+    position:relative;border-radius:16px;padding:1.05rem 1rem 1.05rem 1.15rem;
+    color:#fff;cursor:pointer;user-select:none;overflow:hidden;min-height:104px;
+    box-shadow:0 8px 20px rgba(70,50,90,.16);
+    transition:transform .15s ease, box-shadow .15s ease;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .ticket:active{transform:scale(.97)}
+  .ticket.aviv{background:linear-gradient(135deg,var(--aviv) 0%,var(--aviv2) 100%)}
+  .ticket.nevo{background:linear-gradient(135deg,var(--nevo) 0%,var(--nevo2) 100%)}
+  /* perforation notches */
+  .ticket::before,.ticket::after{
+    content:"";position:absolute;width:20px;height:20px;border-radius:50%;
+    background:linear-gradient(160deg,#fdf3ec,#fbe9f1);left:-10px;
+  }
+  .ticket::before{top:calc(50% - 10px - 22px)}
+  .ticket::after{top:calc(50% - 10px + 22px)}
+  .t-top{display:flex;align-items:center;gap:.5rem}
+  .t-emoji{font-size:1.7rem;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}
+  .t-title{font-size:1.05rem;font-weight:800;line-height:1.25}
+  .t-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:.5rem}
+  .t-tag{font-size:.72rem;opacity:.9;font-weight:600;letter-spacing:.3px}
+  .t-num{font-size:.72rem;opacity:.75;font-weight:700;
+    background:rgba(255,255,255,.22);padding:.12rem .5rem;border-radius:999px}
+  .t-hint{font-size:.68rem;opacity:.85;margin-top:.3rem}
+
+  /* used stamp */
+  .ticket.used{filter:saturate(.7) brightness(.92)}
+  .stamp{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    opacity:0;transform:scale(1.4) rotate(-18deg);transition:opacity .25s,transform .25s;
+    pointer-events:none;
+  }
+  .ticket.used .stamp{opacity:1;transform:scale(1) rotate(-14deg)}
+  .stamp span{
+    border:4px solid #fff;color:#fff;font-weight:900;font-size:1.5rem;
+    padding:.2rem 1rem;border-radius:12px;letter-spacing:2px;
+    background:rgba(0,0,0,.12);text-shadow:0 1px 2px rgba(0,0,0,.25);
+    box-shadow:0 0 0 3px rgba(255,255,255,.25) inset;text-align:center;
+  }
+  .stamp small{display:block;font-size:.6rem;font-weight:700;letter-spacing:.4px;
+    margin-top:.15rem;opacity:.95}
+
+  .reset{
+    display:block;margin:2rem auto 0;background:#fff;border:1.5px solid #ecd9c2;
+    color:var(--ink);padding:.6rem 1.4rem;border-radius:999px;font-size:.9rem;
+    font-family:inherit;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.06);
+  }
+  .reset:active{transform:scale(.96)}
+
+  .footer{text-align:center;margin-top:2.6rem;font-size:.85rem;opacity:.55;line-height:1.7}
+  .footer .heart{color:var(--rose)}
+</style>
+</head>
+<body>
+<div class="sky" id="sky"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="rings">🍼</div>
+    <h1><span class="nowrap">שוברי בייביסיטר רשמיים</span><br><span class="nowrap">של משפחת בן־שדה</span></h1>
+    <div class="date">מתנה לנטע וטל · 6 ביוני 2026 💞</div>
+  </div>
+
+  <div class="counter">10 שוברי בייביסיטר 🍼 · מומשו <b id="usedN">0</b> מתוך <b>10</b></div>
+
+  <div class="group-label aviv-c"><span class="line"></span>🌸 השוברים של אביב<span class="line"></span></div>
+  <div class="grid" id="aviv-grid"></div>
+
+  <div class="group-label nevo-c"><span class="line"></span>⭐ השוברים של נבו<span class="line"></span></div>
+  <div class="grid" id="nevo-grid"></div>
+
+  <button class="reset" id="reset">↺ אפס את כל הקופונים</button>
+
+  <div class="footer">
+    כל הקופונים תקפים ל… תמיד <span class="heart">❤️</span><br>
+    נוצר באהבה ע"י נבו ואביב בעזרת ננה 🤖💖
+  </div>
+</div>
+
+<script>
+const AVIV=Array.from({length:5},()=>({e:"🍼",t:"שובר בייביסיטר",g:"ערב שמירה אחד 🌙"}));
+const NEVO=Array.from({length:5},()=>({e:"🍼",t:"שובר בייביסיטר",g:"ערב שמירה אחד 🌙"}));
+
+const KEY="neta-tal-coupons-v2";
+// shared cloud state (kvdb.io) — so a redemption shows up on every device
+const REMOTE="https://kvdb.io/KhS6voqYJdAbp6VaZQ5cgx/coupons";
+const cache={
+  get(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return {}}},
+  set(v){try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}}
+};
+let used=cache.get();   // instant paint from local cache; pull() reconciles with cloud
+
+function build(list,who,gridId){
+  const grid=document.getElementById(gridId);
+  list.forEach((c,i)=>{
+    const id=who+"-"+i;
+    const el=document.createElement("div");
+    el.dataset.id=id;
+    el.className="ticket "+who+(used[id]?" used":"");
+    el.innerHTML=`
+      <div class="t-top">
+        <span class="t-emoji">${c.e}</span>
+        <span class="t-title">${c.t}</span>
+      </div>
+      <div class="t-hint">${c.g}</div>
+      <div class="t-foot">
+        <span class="t-tag">${who==="aviv"?"🌸 מאביב":"⭐ מנבו"} · קופון בייביסיטר</span>
+        <span class="t-num">${i+1}/5</span>
+      </div>
+      <div class="stamp"><span>מומש 💞<small class="t-date"></small></span></div>`;
+    el.onclick=()=>toggle(id,el);
+    grid.appendChild(el);
+  });
+}
+function fmtDate(v){
+  // v is an epoch-ms timestamp; legacy `true` has no date
+  const ts=(typeof v==="number")?v:Date.parse(v);
+  if(!ts) return "";
+  return new Date(ts).toLocaleDateString("he-IL",{day:"numeric",month:"numeric",year:"2-digit"});
+}
+function applyState(){
+  document.querySelectorAll(".ticket").forEach(el=>{
+    const v=used[el.dataset.id];
+    el.classList.toggle("used",!!v);
+    const d=el.querySelector(".t-date");
+    if(d) d.textContent=v?fmtDate(v):"";
+  });
+  count();
+}
+function count(){
+  const n=Object.values(used).filter(Boolean).length;
+  document.getElementById("usedN").textContent=n;
+}
+async function pull(){
+  try{
+    const r=await fetch(REMOTE,{cache:"no-store"});
+    if(!r.ok) return;
+    const remote=await r.json();
+    if(remote&&typeof remote==="object"&&!Array.isArray(remote)){
+      used=remote; cache.set(used); applyState();
+    }
+  }catch(e){}
+}
+async function push(){
+  try{ await fetch(REMOTE,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(used)}); }catch(e){}
+}
+async function toggle(id,el){
+  const now=!used[id];
+  const ts=Date.now();                         // redemption timestamp
+  if(now) used[id]=ts; else delete used[id];
+  el.classList.toggle("used",now);
+  const d=el.querySelector(".t-date"); if(d) d.textContent=now?fmtDate(ts):"";
+  cache.set(used); count();
+  if(now) burst(el);
+  // read-modify-write: fold our change into the latest cloud state so we
+  // don't clobber a redemption someone else just made on another device
+  try{
+    const r=await fetch(REMOTE,{cache:"no-store"});
+    if(r.ok){
+      const remote=await r.json();
+      if(remote&&typeof remote==="object"&&!Array.isArray(remote)){
+        if(now) remote[id]=ts; else delete remote[id];
+        used=remote; cache.set(used); applyState();
+      }
+    }
+  }catch(e){}
+  push();
+}
+function burst(el){
+  const r=el.getBoundingClientRect();
+  for(let k=0;k<10;k++){
+    const h=document.createElement("div");
+    h.textContent=["❤️","💞","✨","💛","🌟"][k%5];
+    h.style.cssText=`position:fixed;left:${r.left+r.width/2}px;top:${r.top+r.height/2}px;
+      font-size:1.1rem;pointer-events:none;z-index:99;transition:all .9s ease-out;`;
+    document.body.appendChild(h);
+    requestAnimationFrame(()=>{
+      const a=Math.random()*6.28,d=40+Math.random()*70;
+      h.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-30}px) scale(${.6+Math.random()})`;
+      h.style.opacity=0;
+    });
+    setTimeout(()=>h.remove(),950);
+  }
+}
+
+build(AVIV,"aviv","aviv-grid");
+build(NEVO,"nevo","nevo-grid");
+applyState();
+pull();   // reconcile with shared cloud state on load
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) pull(); });
+
+document.getElementById("reset").onclick=()=>{
+  used={}; cache.set(used); applyState(); push();
+};
+
+// floating hearts background
+const sky=document.getElementById("sky");
+const HE=["💛","💞","❤️","🌸","⭐","✨","💍"];
+for(let i=0;i<13;i++){
+  const s=document.createElement("span");
+  s.textContent=HE[i%HE.length];
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=(0.8+Math.random()*0.8)+"rem";
+  s.style.animationDuration=(12+Math.random()*12)+"s";
+  s.style.animationDelay=(-Math.random()*18)+"s";
+  sky.appendChild(s);
+}
+</script>
+</body>
+</html>
